@@ -44,7 +44,10 @@ def test_readable_function():
 
 
 def change_func_and_arg_name(func_name, *args):
-    return '"' + func_name.__name__.replace('_', ' ').title() + ' [' + ','.join([*args]) + ']"'
+    new_func_name = func_name.__name__.replace('_', ' ').title()
+    arg_name = ", ".join([*args])
+    print(f'{new_func_name} [{arg_name}]')
+    return f'{new_func_name} [{arg_name}]'
 
 
 def open_browser(browser_name):
@@ -60,5 +63,3 @@ def go_to_companyname_homepage(page_url):
 def find_registration_button_on_login_page(page_url, button_text):
     actual_result = change_func_and_arg_name(find_registration_button_on_login_page, page_url, button_text)
     assert actual_result == "Find Registration Button On Login Page [https://companyname.com/login, Register]"
-
-
